@@ -1,33 +1,12 @@
 <template>
   <div id="app">
-    <Header class="header"/>
-    <Background/>
-    <MainElement/>
-    <Footer/>
-    
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-// import HelloWorld from './components/HelloWorld.vue'
-import Header from './components/Header'
-import Background from './components/Background'
-import Footer from './components/Footer'
-import MainElement from './components/MainElement'
-
-
-//Vue.component('video-bg', VideoBg);
-
-export default {
-  name: 'app',
-  components: {
-    Header,
-    Background,
-    Footer,
-    MainElement
-  }
-}
-</script>
 
 <style>
 #app {
