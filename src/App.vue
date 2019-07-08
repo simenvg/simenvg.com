@@ -1,17 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header class="header"/>
+    <Background/>
+    <MainElement/>
+    <Footer/>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header'
+import Background from './components/Background'
+import Footer from './components/Footer'
+import MainElement from './components/MainElement'
+
+
+//Vue.component('video-bg', VideoBg);
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Header,
+    Background,
+    Footer,
+    MainElement
   }
 }
 </script>
@@ -24,5 +37,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display:flex;
+  align-content: center;
 }
 </style>
