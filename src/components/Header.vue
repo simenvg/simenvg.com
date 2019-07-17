@@ -3,15 +3,29 @@
         <div>
             <a href="#default" class="logo">SIMENVG.COM</a>
             <div class="header-right">
-                <a class="active" href="#home">Home</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
+                <a :class="{ 'active' : active === 'home'}" href="/" v-on:click="setActive('home')">Home</a>
+                <a :class="{ 'active' : active === 'sykkel'}" href="/sykkel" v-on:click="setActive('sykkel')">Sykkel</a>
+                <a :class="{ 'active' : active === 'about'}" href="#about" v-on:click="setActive('about')">About</a>
             </div>
         </div>
     </header>
 </template>
 
 <script>
+export default {
+    data: function() {
+        return {
+            active: ''
+        }
+    },
+    methods: {
+        setActive(value){
+            this.active = value;
+        }
+    }
+}
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -61,6 +75,7 @@
 /* Float the link section to the right */
 .header-right {
   float: right;
+  margin-right: 40px;
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 

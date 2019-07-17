@@ -2,10 +2,10 @@
     <header>
     <div class="img-container">
         <div class="img-content">
-            <!-- <img src="../assets/background.png"/> -->
-            <video autoplay muted loop id="myVideo">
+            <img src="../assets/background.png"/>
+            <!-- <video autoplay muted loop id="myVideo">
                 <source src="../assets/background-video.mp4" type="video/mp4">
-            </video>
+            </video> -->
         </div>
     </div>
     </header>
