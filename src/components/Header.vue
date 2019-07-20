@@ -32,7 +32,7 @@ export default {
 <style scoped>
 /* Style the header with a grey background and some padding */
 .header {
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: #f1f1f1;
     padding: 20px 10px;
     width: 100%;

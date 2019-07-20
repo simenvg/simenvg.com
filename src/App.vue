@@ -33,6 +33,7 @@ export default {
   margin-top: 60px;
   display:flex;
   align-content: center;
+  flex-direction: column;
 }
 </style>
 

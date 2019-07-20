@@ -30,7 +30,7 @@ export default {
 <style scoped>
 .outer {
   min-height: 100%;
-  margin-top: 80px;
+  /* margin-top: 80px; */
   display: flex;
   justify-content: center;
   align-items: center;

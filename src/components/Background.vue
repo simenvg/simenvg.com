@@ -18,7 +18,7 @@
 <style scoped>
 .img-container{
     position: fixed;
-    top: 89px;
+    top: auto;
     left: 0px;
     z-index: -10;
     width:100%;
