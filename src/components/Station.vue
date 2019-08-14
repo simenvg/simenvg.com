@@ -34,6 +34,8 @@ export default {
     flex-direction: column;
     margin: 10px;
     flex: 1;
+    min-width: 150px;
+    max-width: 150px;
 }
 
 .separator{

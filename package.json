@@ -10,18 +10,21 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
+    "vue-burger-menu": "^2.0.2",
     "vue-router": "^3.0.3",
     "vue-spinner": "^1.0.3",
     "vue-video-background": "^0.1.2",
     "vue-videobg": "^2.0.0"
   },
   "devDependencies": {
+    "@profesia/vue-hamburger-menu-component": "^2.0.2",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "less-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

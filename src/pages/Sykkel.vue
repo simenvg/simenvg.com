@@ -132,7 +132,6 @@ h1{
 .outer{
     width: 100%;
     display: flex;
-    height: 100%;
     /* justify-content: center; */
     flex-direction: column;
     /* align-items: center; */

@@ -1,22 +1,35 @@
 <template>
     <header>
         <div>
+            
+            <Slide right class="menu">
+              <a :class="{ 'active' : active === 'home'}" href="/" v-on:click="setActive('home')"><span>Home</span></a>
+              <a :class="{ 'active' : active === 'sykkel'}" href="/sykkel" v-on:click="setActive('sykkel')"><span>Sykkel</span></a>
+              <a :class="{ 'active' : active === 'about'}" href="#about" v-on:click="setActive('about')"><span>About</span></a>
+            
+            </Slide>
             <a href="#default" class="logo">SIMENVG.COM</a>
-            <div class="header-right">
+            <!-- <div class="header-right">
                 <a :class="{ 'active' : active === 'home'}" href="/" v-on:click="setActive('home')">Home</a>
                 <a :class="{ 'active' : active === 'sykkel'}" href="/sykkel" v-on:click="setActive('sykkel')">Sykkel</a>
                 <a :class="{ 'active' : active === 'about'}" href="#about" v-on:click="setActive('about')">About</a>
-            </div>
+            </div> -->
         </div>
     </header>
 </template>
 
 <script>
+import { Slide } from 'vue-burger-menu' 
+
 export default {
+  
     data: function() {
         return {
             active: ''
         }
+    },
+    components: {
+        Slide
     },
     methods: {
         setActive(value){
@@ -40,6 +53,11 @@ export default {
     top: 0px;
     left:0px;
     overflow-y:scroll;  
+}
+
+.menu{
+  display:flex;
+  flex-direction: column;
 }
 
 /* Style the header links */

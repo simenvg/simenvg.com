@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <Header class="header"/>
-    <Background/>
-    <router-view/>
-    <Footer/>
-
+      <Background/>
+      <div class="content">
+        <Header class="header"/>
+        <router-view/>
+        <Footer/>
+      </div>
   </div>
 </template>
 
@@ -30,9 +31,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-  display:flex;
-  align-content: center;
+}
+
+.content {
+  display: flex;
   flex-direction: column;
 }
 </style>
