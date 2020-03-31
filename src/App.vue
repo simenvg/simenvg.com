@@ -3,7 +3,7 @@
       <Background/>
       <div class="content">
         <Header class="header"/>
-        <router-view/>
+        <router-view class="view"/>
         <Footer/>
       </div>
   </div>
@@ -31,6 +31,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.view{
+  margin-top: 100px;
 }
 
 .content {

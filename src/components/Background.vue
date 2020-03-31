@@ -1,12 +1,9 @@
 <template>
     <header>
     <div class="img-container">
-        <div class="img-content">
+        <!-- <div class="img-content">
             <img src="../assets/background.png"/>
-            <!-- <video autoplay muted loop id="myVideo">
-                <source src="../assets/background-video.mp4" type="video/mp4">
-            </video> -->
-        </div>
+        </div> -->
     </div>
     </header>
 </template>
