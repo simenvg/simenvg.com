@@ -36,7 +36,6 @@ export default {
   },
   methods: {
       cellClicked(cell_id){
-          console.log(cell_id);
           this.$emit("CellClick", this.id, cell_id);
       }
   }
@@ -51,6 +50,14 @@ export default {
     display: inline-block;
     margin: 2px;
     border: 2px solid black;
+}
+
+.row {
+    height: 60px; /* conditional from prop 1/3*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;    
 }
 
 

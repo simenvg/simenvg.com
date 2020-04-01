@@ -1,10 +1,10 @@
 <template>
 
     <div class="cell" @click="clicked()" v-bind:class="{ active: isSelected() }">
-        <div v-if="num!=''">
-            <p class="num">{{num}}</p>
+        <div v-if="getNumBlockCell(block_id, id)!=''">
+            <p class="num">{{getNumBlockCell(block_id, id)}}</p>
         </div>
-        <div v-if="num==''">
+        <div v-if="getNumBlockCell(block_id, id)==''">
             <div class="row">
             <div class="mini-cell">
                 <p class="help-num" v-if="showNums[0]">1</p>
@@ -61,13 +61,13 @@ export default {
     computed: { 
       ...mapGetters([
         'getSelectedBlock',
-        'getSelectedCell'
-        ])
+        'getSelectedCell',
+        'getNumBlockCell'
+        ]),
     },
     data: function() {
         return {
-            num: '',
-            showNums: [0,0,0,0,1,0,1,0,1],
+            showNums: [0,0,0,0,0,0,0,0,0],
         }
     },
     methods: {
@@ -80,7 +80,7 @@ export default {
             } else {
                 return false
             }
-        }
+        },
     }
 }
 </script>
@@ -91,41 +91,46 @@ export default {
 .cell { 
     width: 60px; /* conditional from prop*/  
     height: 60px; /* conditional from prop*/
+    margin: 0;
+    padding: 0;
     display: inline-block;
-    border: 1px solid red;
+    border: 1px solid black;
+
 }
 
 .row {
     height: 20px; /* conditional from prop 1/3*/
     display: flex;
     flex-direction: row;
-    margin: 0;
-    justify-content: space-around;
-    color: white;
+    justify-content: center;
     align-items: center;
+    margin: 0;    
 }
 
 .mini-cell{
     width: 20px; /* conditional from prop 1/3*/
     height: 20px; /* conditional from prop 1/3*/
-    margin: 0;
-    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .help-num {
-    margin:0 auto;
+    margin:0;
     color: black;
-    font-size: 18px; /* conditional from prop 1/3 - 2*/
+    font-size: 17px; /* conditional from prop 1/3 - 2*/
 }
 
 .num{
-    margin:0 auto;
+    margin:0 0;
+    max-height: 60px;
+    padding: 0;
     color: black;
     font-size: 55px; /* conditional from prop 1/3 - 2*/
 }
 
 .active {
-    background-color: rgb(72, 171, 236, 0.5);
+    background-color: rgb(40, 137, 212, 0.5)
 }
 
 
