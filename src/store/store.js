@@ -59,6 +59,9 @@ export const store = new Vuex.Store({
             var column = (payload.block_id % 3) * 3 + payload.cell_id % 3;
             Vue.set(state.sudoku.board[row], column, payload.num);
         },
+        setNumberRowColumn: (state, payload) => {
+            Vue.set(state.sudoku.board[payload.row], payload.column, payload.num);
+        },
     },
 
     actions: {
@@ -70,6 +73,9 @@ export const store = new Vuex.Store({
         },
         setNumber: (context, payload) => {
             context.commit('setNumber', payload)
+        },
+        setNumberRowColumn: (context, payload) => {
+            context.commit('setNumberRowColumn', payload)
         },
     },
 
