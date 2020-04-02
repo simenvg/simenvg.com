@@ -52,13 +52,26 @@ export default {
     border: 2px solid black;
 }
 
-.row {
-    height: 60px; /* conditional from prop 1/3*/
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;    
+@media screen and (min-width:500px) {
+    .row {
+        height: 60px; /* conditional from prop 1/3*/
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;    
+    }
 }
+
+@media screen and (max-width:500px) {
+    .row {
+        height: 36px; /* conditional from prop 1/3*/
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;    
+    }
+}
+
 
 
 

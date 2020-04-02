@@ -91,46 +91,94 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.cell { 
-    width: 60px; /* conditional from prop*/  
-    height: 60px; /* conditional from prop*/
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    border: 1px solid black;
 
-}
+@media screen and (min-width:500px) {
 
-.row {
-    height: 20px; /* conditional from prop 1/3*/
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 0;    
-}
+  .cell { 
+        width: 60px; /* conditional from prop*/  
+        height: 60px; /* conditional from prop*/
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        border: 1px solid black;
 
-.mini-cell{
-    width: 20px; /* conditional from prop 1/3*/
-    height: 20px; /* conditional from prop 1/3*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    }
 
-.help-num {
-    margin:0;
-    color: black;
-    font-size: 17px; /* conditional from prop 1/3 - 2*/
-}
+    .row {
+        height: 20px; /* conditional from prop 1/3*/
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;    
+    }
 
-.num{
+    .mini-cell{
+        width: 20px; /* conditional from prop 1/3*/
+        height: 20px; /* conditional from prop 1/3*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .help-num {
+        margin:0;
+        color: black;
+        font-size: 17px; /* conditional from prop 1/3 - 2*/
+    }
+
+    .num{
     margin:0 0;
     max-height: 60px;
     padding: 0;
     color: black;
     font-size: 55px; /* conditional from prop 1/3 - 2*/
 }
+}
+@media screen and (max-width:500px) {
+    .cell { 
+        width: 36px; /* conditional from prop*/  
+        height: 36px; /* conditional from prop*/
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        border: 1px solid black;
+
+    }
+
+    .row {
+        height: 12px; /* conditional from prop 1/3*/
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;    
+    }
+
+    .mini-cell{
+        width: 12px; /* conditional from prop 1/3*/
+        height: 12px; /* conditional from prop 1/3*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .help-num {
+        margin:0;
+        color: black;
+        font-size: 9px; /* conditional from prop 1/3 - 2*/
+    }
+
+    .num{
+        margin:0 0;
+        max-height: 36px;
+        padding: 0;
+        color: black;
+        font-size: 33px; /* conditional from prop 1/3 - 2*/
+}
+}
+
+
 
 .active {
     background-color: rgba(98, 216, 151, 0.5)

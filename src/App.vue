@@ -4,7 +4,7 @@
       <div class="content">
         <Header class="header"/>
         <router-view class="view"/>
-        <Footer/>
+        <!-- <Footer/> -->
       </div>
   </div>
 </template>
@@ -12,14 +12,14 @@
 <script>
 import Header from './components/Header'
 import Background from './components/Background'
-import Footer from './components/Footer'
+// import Footer from './components/Footer'
 
 export default {
   name: 'app',
   components: {
     Header,
     Background,
-    Footer
+    // Footer
   }
 }
 </script>

@@ -4,6 +4,7 @@
             <button class="diff_btn btn" @click="loadBoard('easy')">Easy</button>
             <button class="diff_btn btn" @click="loadBoard('medium')">Medium</button>
             <button class="diff_btn btn" @click="loadBoard('hard')">Hard</button>
+            <button class="help-btn btn" @click="getAllCellOptions()">Help</button>  
         </div>
         <div class="row">
             <Block id=0 v-on:CellClick="cellClicked"></Block>
@@ -43,9 +44,6 @@
             <button class="sml btn" @click="updateCellHelpNumbers(8)">8</button>
             <button class="sml btn" @click="updateCellHelpNumbers(9)">9</button>
             <button class="sml btn" @click="updateCellHelpNumbers(0)">X</button>
-        </div>
-        <div class=buttons>
-            <button class="help-btn btn" @click="getAllCellOptions()">Help</button>  
         </div>
     </div>
 </template>
@@ -204,37 +202,77 @@ export default {
     justify-content: center;
 }
 
-.btn {
-    background-color: #4CAF50; /* Green */
-    border: 1px solid black;
-    color: white;
-    padding: 15px 27px;
-    text-align: center;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    font-size: 22px;
-    width: 16px;
-    margin: 2px;
-    box-shadow: 2px 3px black;
+@media screen and (min-width:500px) {
+    .btn {
+        background-color: #4CAF50; /* Green */
+        border: 1px solid black;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        font-size: 22px;
+        width: 16px;
+        margin: 2px;
+        box-shadow: 2px 3px black;
+    }
+
+    .sml {
+        font-size: 15px;
+        background-color: rgba(76, 175, 79, 0.767);
+    }
+
+    .help-btn {
+        font-size: 25px;
+        width: 150px;
+        background-color: rgba(76, 175, 79, 0.767);
+    }
+
+    .diff_btn {
+        background-color: rgb(65, 79, 204); /* Green */
+        font-size: 22px;
+        width: 150px;
+    }
 }
 
-.sml {
-    font-size: 15px;
-    background-color: rgba(76, 175, 79, 0.767);
+@media screen and (max-width:500px) {
+    .btn {
+        background-color: #4CAF50; /* Green */
+        border: 1px solid black;
+        color: white;
+        padding: 15px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        font-size: 22px;
+        width: 16px;
+        margin: 2px;
+        box-shadow: 2px 3px black;
+    }
+
+    .sml {
+        font-size: 15px;
+        background-color: rgba(76, 175, 79, 0.767);
+    }
+
+    .help-btn {
+        font-size: 18px;
+        margin-left: 25px;
+        width: 70px;
+        background-color: rgba(76, 175, 79, 0.767);
+    }
+
+    .diff_btn {
+        background-color: rgb(65, 79, 204); /* Green */
+        font-size: 18px;
+        width: 80px;
+    }
 }
 
-.help-btn {
-    font-size: 25px;
-    width: 150px;
-    background-color: rgba(76, 175, 79, 0.767);
-}
 
-.diff_btn {
-    background-color: rgb(65, 79, 204); /* Green */
-    font-size: 22px;
-    width: 150px;
-}
+
 
 .row {
     /* height: 60px;  conditional from prop 1/3*/
