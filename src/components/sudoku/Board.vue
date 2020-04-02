@@ -43,7 +43,10 @@
             <button class="sml btn" @click="updateCellHelpNumbers(8)">8</button>
             <button class="sml btn" @click="updateCellHelpNumbers(9)">9</button>
             <button class="sml btn" @click="updateCellHelpNumbers(0)">X</button>
-        </div>  
+        </div>
+        <div class=buttons>
+            <button class="help-btn btn" @click="getAllCellOptions()">Help</button>  
+        </div>
     </div>
 </template>
 
@@ -71,7 +74,7 @@ export default {
     },
     data: function() {
         return {
-            b: '',
+            bg: '',
         }
     },
     methods: {
@@ -80,16 +83,14 @@ export default {
             'setSelectedCell',
             'setNumber',
             'setNumberRowColumn',
+            'setPossibleValues'
         ]),
         cellClicked(block_id, cell_id){
-            console.log("PRESSED: " + block_id + "  " + cell_id);
             this.$store.dispatch('setSelectedBlock', block_id)
             this.$store.dispatch('setSelectedCell', cell_id)
         },
 
         updateCellNumber(number) {
-            console.log("Selected: " + this.getSelectedBlock + "   " + this.getSelectedCell );
-            console.log("hdsa  " + this.getCellEditable(this.getSelectedBlock, this.getSelectedCell))
             if (this.getCellEditable(this.getSelectedBlock, this.getSelectedCell)){
                 var obj={
                 block_id: this.getSelectedBlock,
@@ -97,9 +98,6 @@ export default {
                 num: number
                 };
                 this.$store.dispatch('setNumber', obj);
-            }
-            else {
-                console.log("NO EDIT");
             }
             
         },
@@ -111,11 +109,8 @@ export default {
                     cell_id: this.getSelectedCell,
                     num: number
                 };
-                console.log(obj);
+
                 this.$store.dispatch('setHelpNumber', obj);
-            }
-            else {
-                console.log("no help edit");
             }
         },
         loadBoard(difficulty) {
@@ -135,6 +130,58 @@ export default {
                         }
                     }
                 })
+        },
+        getAllCellOptions() {
+            for (var r = 0; r < 9; r++){
+                for (var c = 0; c < 9; c++){
+                    var block_id = Math.floor(r/3) * 3 + Math.floor(c/3);
+                    var cell_id = (r % 3) * 3 + c % 3;
+                    if (this.getCellEditable(block_id, cell_id)){
+                        var obj = {
+                            block_id: block_id,
+                            cell_id: cell_id,
+                            val: this.getCellOptions(r,c)
+                        }
+                        this.$store.dispatch('setPossibleValues', obj);
+                    }
+                    
+                }
+            }
+        },
+        getCellOptions(row, column){
+            var b = this.getBoard;
+            var usedNumbers = [];
+            var numsInBlock = this.getNumsInBlock(row, column);
+            for (var i = 0; i < 9; i++){
+                if (b[row][i] != 0) {
+                    usedNumbers.push(b[row][i]);
+                }
+                if (b[i][column] != 0) {
+                    usedNumbers.push(b[i][column]);
+                }
+                if (numsInBlock[i] != 0) {
+                    usedNumbers.push(numsInBlock[i]);
+                }
+            }
+            var res = [1,1,1,1,1,1,1,1,1];
+            for (let num of usedNumbers) {
+                res[num-1] = 0;
+            }
+            return res;
+
+            
+        },
+        getNumsInBlock(row, column) {
+            var b = this.getBoard;
+            var res = []
+            var startIndexRow = Math.floor(row/3) * 3;
+            var startIndexColumn = Math.floor(column/3) * 3;
+            for (var r = startIndexRow; r < startIndexRow + 3; r++){
+                for (var c = startIndexColumn; c < startIndexColumn + 3; c++){
+                    res.push(b[r][c])
+                }   
+            }
+            return res;
         }
     }
 }
@@ -174,6 +221,12 @@ export default {
 
 .sml {
     font-size: 15px;
+    background-color: rgba(76, 175, 79, 0.767);
+}
+
+.help-btn {
+    font-size: 25px;
+    width: 150px;
     background-color: rgba(76, 175, 79, 0.767);
 }
 

@@ -133,12 +133,11 @@ export default {
 }
 
 .active {
-    background-color: rgb(40, 137, 212, 0.5)
+    background-color: rgba(98, 216, 151, 0.5)
 }
 
 .uneditable {
-    border: 1px solid red;
-    background-color: red;
+    background-color: rgb(189, 198, 202);
 }
 
 

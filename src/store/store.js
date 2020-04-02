@@ -86,6 +86,7 @@ export const store = new Vuex.Store({
             Vue.set(state.sudoku.board[payload.row], payload.column, payload.num);
             var block_id = Math.floor(payload.row/3) * 3 + Math.floor(payload.column/3);
             var cell_id = (payload.row % 3) * 3 + payload.column % 3;
+            Vue.set(state.sudoku.cells[block_id][cell_id], 'showNums', [0,0,0,0,0,0,0,0,0]);
             if (payload.num != 0){
                 Vue.set(state.sudoku.cells[block_id][cell_id], 'editable', false);
             }
@@ -112,6 +113,9 @@ export const store = new Vuex.Store({
         },
         setEditable: (state, payload) => {
             Vue.set(state.sudoku.cells[payload.block_id][payload.cell_id], 'editable', payload.val);
+        },
+        setPossibleValues: (state, payload) => {
+            Vue.set(state.sudoku.cells[payload.block_id][payload.cell_id], 'showNums', payload.val);
         }
     },
 
@@ -133,6 +137,9 @@ export const store = new Vuex.Store({
         },
         setEditable: (context, payload) => {
             context.commit('setEditable', payload)
+        },
+        setPossibleValues: (context, payload) => {
+            context.commit('setPossibleValues', payload)
         }
     },
 
