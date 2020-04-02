@@ -21,17 +21,29 @@
             <Block id=8 v-on:CellClick="cellClicked"></Block>
         </div>
         <div class="buttons">
-            <button class="btn" @click="updateCell(1)">1</button>
-            <button class="btn" @click="updateCell(2)">2</button>
-            <button class="btn" @click="updateCell(3)">3</button>
-            <button class="btn" @click="updateCell(4)">4</button>
-            <button class="btn" @click="updateCell(5)">5</button>
-            <button class="btn" @click="updateCell(6)">6</button>
-            <button class="btn" @click="updateCell(7)">7</button>
-            <button class="btn" @click="updateCell(8)">8</button>
-            <button class="btn" @click="updateCell(9)">9</button>
-            <button class="btn" @click="updateCell(0)">X</button>
+            <button class="btn" @click="updateCellNumber(1)">1</button>
+            <button class="btn" @click="updateCellNumber(2)">2</button>
+            <button class="btn" @click="updateCellNumber(3)">3</button>
+            <button class="btn" @click="updateCellNumber(4)">4</button>
+            <button class="btn" @click="updateCellNumber(5)">5</button>
+            <button class="btn" @click="updateCellNumber(6)">6</button>
+            <button class="btn" @click="updateCellNumber(7)">7</button>
+            <button class="btn" @click="updateCellNumber(8)">8</button>
+            <button class="btn" @click="updateCellNumber(9)">9</button>
+            <button class="btn" @click="updateCellNumber(0)">X</button>
         </div>    
+        <div class="buttons">
+            <button class="sml btn" @click="updateCellHelpNumbers(1)">1</button>
+            <button class="sml btn" @click="updateCellHelpNumbers(2)">2</button>
+            <button class="sml btn" @click="updateCellHelpNumbers(3)">3</button>
+            <button class="sml btn" @click="updateCellHelpNumbers(4)">4</button>
+            <button class="sml btn" @click="updateCellHelpNumbers(5)">5</button>
+            <button class="sml btn" @click="updateCellHelpNumbers(6)">6</button>
+            <button class="sml btn" @click="updateCellHelpNumbers(7)">7</button>
+            <button class="sml btn" @click="updateCellHelpNumbers(8)">8</button>
+            <button class="sml btn" @click="updateCellHelpNumbers(9)">9</button>
+            <button class="sml btn" @click="updateCellHelpNumbers(0)">X</button>
+        </div>  
     </div>
 </template>
 
@@ -54,6 +66,7 @@ export default {
         'getSelectedCell',
         'getNumBlockCell',
         'getBoard',
+        'getCellEditable'
         ])
     },
     data: function() {
@@ -66,20 +79,44 @@ export default {
             'setSelectedBlock',
             'setSelectedCell',
             'setNumber',
-            'setNumberRowColumn'
+            'setNumberRowColumn',
         ]),
         cellClicked(block_id, cell_id){
+            console.log("PRESSED: " + block_id + "  " + cell_id);
             this.$store.dispatch('setSelectedBlock', block_id)
             this.$store.dispatch('setSelectedCell', cell_id)
         },
 
-        updateCell(number) {
-            var obj={
+        updateCellNumber(number) {
+            console.log("Selected: " + this.getSelectedBlock + "   " + this.getSelectedCell );
+            console.log("hdsa  " + this.getCellEditable(this.getSelectedBlock, this.getSelectedCell))
+            if (this.getCellEditable(this.getSelectedBlock, this.getSelectedCell)){
+                var obj={
                 block_id: this.getSelectedBlock,
                 cell_id: this.getSelectedCell,
                 num: number
-            };
-            this.$store.dispatch('setNumber', obj);
+                };
+                this.$store.dispatch('setNumber', obj);
+            }
+            else {
+                console.log("NO EDIT");
+            }
+            
+        },
+        updateCellHelpNumbers(number) {
+            if (this.getCellEditable(this.getSelectedBlock, this.getSelectedCell)){
+                    
+                var obj={
+                    block_id: this.getSelectedBlock,
+                    cell_id: this.getSelectedCell,
+                    num: number
+                };
+                console.log(obj);
+                this.$store.dispatch('setHelpNumber', obj);
+            }
+            else {
+                console.log("no help edit");
+            }
         },
         loadBoard(difficulty) {
             Vue.axios
@@ -133,6 +170,11 @@ export default {
     width: 16px;
     margin: 2px;
     box-shadow: 2px 3px black;
+}
+
+.sml {
+    font-size: 15px;
+    background-color: rgba(76, 175, 79, 0.767);
 }
 
 .diff_btn {

@@ -1,41 +1,41 @@
 <template>
 
     <div class="cell" @click="clicked()" v-bind:class="{ active: isSelected() }">
-        <div v-if="getNumBlockCell(block_id, id)!=''">
-            <p class="num">{{getNumBlockCell(block_id, id)}}</p>
+        <div v-if="getNumBlockCell(block_id, id)!=0">
+            <p class="num" v-bind:class="{ uneditable: !getCellEditable(block_id,id) }">{{getNumBlockCell(block_id, id)}}</p>
         </div>
-        <div v-if="getNumBlockCell(block_id, id)==''">
+        <div v-if="getNumBlockCell(block_id, id)==0">
             <div class="row">
             <div class="mini-cell">
-                <p class="help-num" v-if="showNums[0]">1</p>
+                <p class="help-num" v-if="getShowNums(block_id, id)[0]">1</p>
             </div>
             <div class="mini-cell">
-                <p class="help-num" v-if="showNums[1]">2</p>
+                <p class="help-num" v-if="getShowNums(block_id, id)[1]">2</p>
             </div>
             <div class="mini-cell">
-                <p class="help-num" v-if="showNums[2]">3</p>
+                <p class="help-num" v-if="getShowNums(block_id, id)[2]">3</p>
             </div>
         </div>  
         <div class="row">
             <div class="mini-cell">
-                <p class="help-num" v-if="showNums[3]">4</p>
+                <p class="help-num" v-if="getShowNums(block_id, id)[3]">4</p>
             </div>
             <div class="mini-cell">
-                <p class="help-num" v-if="showNums[4]">5</p>
+                <p class="help-num" v-if="getShowNums(block_id, id)[4]">5</p>
             </div>
             <div class="mini-cell">
-                <p class="help-num" v-if="showNums[5]">6</p>
+                <p class="help-num" v-if="getShowNums(block_id, id)[5]">6</p>
             </div>
         </div> 
         <div class="row">
             <div class="mini-cell">
-                <p class="help-num" v-if="showNums[6]">7</p>
+                <p class="help-num" v-if="getShowNums(block_id, id)[6]">7</p>
             </div>
             <div class="mini-cell">
-                <p class="help-num" v-if="showNums[7]">8</p>
+                <p class="help-num" v-if="getShowNums(block_id, id)[7]">8</p>
             </div>
             <div class="mini-cell">
-                <p class="help-num" v-if="showNums[8]">9</p>
+                <p class="help-num" v-if="getShowNums(block_id, id)[8]">9</p>
             </div>
         </div>   
         </div>
@@ -62,13 +62,10 @@ export default {
       ...mapGetters([
         'getSelectedBlock',
         'getSelectedCell',
-        'getNumBlockCell'
+        'getNumBlockCell',
+        'getShowNums',
+        'getCellEditable'
         ]),
-    },
-    data: function() {
-        return {
-            showNums: [0,0,0,0,0,0,0,0,0],
-        }
     },
     methods: {
         clicked(){
@@ -81,6 +78,12 @@ export default {
                 return false
             }
         },
+        showNumber() {
+            if ( 1 <= this.getNumBlockCell(this.block_id, this.id) <= 9){
+                return true;
+            }
+            return false;
+        }
     }
 }
 </script>
@@ -131,6 +134,11 @@ export default {
 
 .active {
     background-color: rgb(40, 137, 212, 0.5)
+}
+
+.uneditable {
+    border: 1px solid red;
+    background-color: red;
 }
 
 
