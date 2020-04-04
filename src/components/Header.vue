@@ -1,40 +1,54 @@
 <template>
     <header>
-        <div>
-            
-            <Slide right class="menu">
+      <transition name="fade">
+        <div v-if="showNavMenu" class="background" />
+      </transition>
+      <transition name="slide">
+        <NavMenu @close="close" :showNavMenu="showNavMenu" />
+      </transition>
+      <div class="row">
+        <div @click="showMenu">
+            <img src="../assets/burger.svg" height="30px" width=30px>
+        </div>
+            <!-- <Slide right class="menu">
               <a :class="{ 'active' : active === 'home'}" href="/" v-on:click="setActive('home')"><span>Home</span></a>
               <a :class="{ 'active' : active === 'sykkel'}" href="/sykkel" v-on:click="setActive('sykkel')"><span>Sykkel</span></a>
               <a :class="{ 'active' : active === 'about'}" href="#about" v-on:click="setActive('about')"><span>About</span></a>
             
-            </Slide>
-            <a href="#default" class="logo">SIMENVG.COM</a>
+            </Slide> -->
+            <a href="/" class="logo">SIMENVG.COM</a>
             <!-- <div class="header-right">
                 <a :class="{ 'active' : active === 'home'}" href="/" v-on:click="setActive('home')">Home</a>
                 <a :class="{ 'active' : active === 'sykkel'}" href="/sykkel" v-on:click="setActive('sykkel')">Sykkel</a>
                 <a :class="{ 'active' : active === 'about'}" href="#about" v-on:click="setActive('about')">About</a>
             </div> -->
-        </div>
+      </div>
     </header>
 </template>
 
 <script>
-import { Slide } from 'vue-burger-menu' 
+// import { Slide } from 'vue-burger-menu' 
+import NavMenu from './NavMenu.vue'
 
 export default {
   
     data: function() {
         return {
-            active: ''
+            active: '',
+            showNavMenu: false
         }
     },
     components: {
-        Slide
+        NavMenu
     },
     methods: {
-        setActive(value){
-            this.active = value;
+        showMenu() {
+          this.showNavMenu = true;
+        },
+        close() {
+          this.showNavMenu = false;
         }
+
     }
 }
 
@@ -55,11 +69,47 @@ export default {
     overflow-y:scroll;  
 }
 
-.menu{
-  display:flex;
-  flex-direction: column;
+.background {
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+    /* z-index: 0; */
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0.4);
 }
 
+img {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: 0.5s;
+}
+.slide-enter {
+  transform: translate(-100%, 0);
+}
+.slide-leave-to {
+  transform: translate(100%, 0);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1.2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 /* Style the header links */
 .header a {
   float: left;
